@@ -5,6 +5,8 @@ namespace Project.Scripts
 {
     public class Init : MonoBehaviour
     {
+        [SerializeField] private GameSettings GameSettings;
+        [SerializeField] private Prefabs Prefabs; 
         private IApplicationPresenter _presenter;
         
         public void Start()

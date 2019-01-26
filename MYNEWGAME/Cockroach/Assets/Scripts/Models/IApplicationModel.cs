@@ -3,12 +3,9 @@ namespace Project.Scripts.Models
     public interface IApplicationModel
     {
         int BestScore { get; }
-        int Coins { get; }
-        float LastLevelProgress { get; }
-        int CurrentLevelReached { get; }
-        
+        float Hunger { get; }
+        float Thirst { get; }
         void Update();
-        void ReportGameOverWithScore(int score, int coinsCollected);
-        void ReportLevelPassWithCScore(int level, int score, int coinsCollected);
+        void ReportGameOverWithScore(int score);
     }
 }

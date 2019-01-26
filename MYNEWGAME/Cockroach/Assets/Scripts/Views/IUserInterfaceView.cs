@@ -1,16 +1,19 @@
+using UnityEngine;
+
 namespace Project.Scripts.Views
 {
     public interface IUserInterfaceView
     {
-        bool IsLeftPressed { get; }
-        bool IsRightPressed { get; }
-        bool IsPausePressed { get; }
+        Vector2 AnglePress { get; }
+        bool Pause { get; }
+        bool NewGame { get; }
+        bool Continue { get; }
 
-        void Update();
+        void Update(float hunger, float thirst);
 
         void ShowGameOver();
-        void ShowNewGame();
         void ShowMainMenu();
-        void ShowCharSelect();
+        void ShowPause();
+        void ShowHUD(); 
     }
 }

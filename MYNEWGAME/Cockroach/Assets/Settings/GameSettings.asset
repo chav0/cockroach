@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933d91b55990c48aeb3f8defa9b90f65, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  YoungAge: 10
+  AdultAge: 70000
+  OldAge: 70000
+  Speed: 10

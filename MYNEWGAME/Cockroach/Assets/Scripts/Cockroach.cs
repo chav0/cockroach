@@ -16,7 +16,7 @@ public class Cockroach : MonoBehaviour
 
     private Sequence _sequence;
 
-    public Cockroach(float timeBirth, Age newAge = Age.Young)
+    public void CockroachCreate(float timeBirth, Age newAge = Age.Young)
     {
         TimeBirth = timeBirth;
         Age = newAge;
@@ -25,6 +25,16 @@ public class Cockroach : MonoBehaviour
         {
             Stages[i].SetActive(i == (int)newAge);
         }
+    }
+
+    public void SetPosition(Vector2 position)
+    {
+        transform.position = Vector3.Lerp(transform.position, position, .1f); 
+    }
+
+    public void SetDeath()
+    {
+        Destroy(gameObject);
     }
 
     public void SetPregnant(bool isPregnant, float timePregnant)
@@ -54,9 +64,7 @@ public class Cockroach : MonoBehaviour
             Age = newAge; 
         }
             
-    }
-    
-    
+    }    
 }
 
 public enum Age
@@ -64,4 +72,5 @@ public enum Age
     Young = 0,
     Adult = 1,
     Old = 2,
+    Death = 3, 
 }

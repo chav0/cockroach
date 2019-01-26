@@ -143,7 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameSettings: {fileID: 11400000, guid: 63bd110fd220b459d99d22e3e252dc79, type: 2}
   Prefabs: {fileID: 11400000, guid: 57a945a3c78a64b82a3a51abf84eda8d, type: 2}
-  Screens: {fileID: 0}
 --- !u!4 &13952458
 Transform:
   m_ObjectHideFlags: 0
@@ -207,6 +206,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 704a69ce4adc547e8ab9ff68a5355b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
   Hungry: {fileID: 23057596}
@@ -459,6 +466,7 @@ GameObject:
   - component: {fileID: 661640009}
   - component: {fileID: 661640008}
   - component: {fileID: 661640007}
+  - component: {fileID: 661640011}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -546,6 +554,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &661640011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661640006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27583694453f41fca912c259661ade6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu: {fileID: 0}
+  Pause: {fileID: 0}
+  HUD: {fileID: 21520961}
+  Defeat: {fileID: 0}
 --- !u!1 &673881387
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +777,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b9fc7d4378c43c9b947d8c048bfe88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Angle: 0
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Angle: {x: 0, y: 0}
 --- !u!114 &1486866531
 MonoBehaviour:
   m_ObjectHideFlags: 0

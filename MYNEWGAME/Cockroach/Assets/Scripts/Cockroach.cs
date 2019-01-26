@@ -29,6 +29,8 @@ public class Cockroach : MonoBehaviour
 
     public void SetPosition(Vector2 position)
     {
+        Vector3 perpVector = Vector3.Cross (Vector2.right, position);
+        float out_angle = Mathf.Atan2(Vector3.Dot(Vector3.one, perpVector), Vector3.Dot(Vector2.right, position)) * Mathf.Rad2Deg;
         transform.position = Vector3.Lerp(transform.position, position, .1f); 
     }
 

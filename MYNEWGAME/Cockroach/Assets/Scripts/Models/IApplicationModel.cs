@@ -4,8 +4,10 @@ namespace Project.Scripts.Models
     {
         int BestScore { get; }
         float Hunger { get; }
+        float FullHunger { get; }
         float Thirst { get; }
-        void Update();
+        float FullThirst { get; }
+        void Update(float addFood, float addWater);
         void ReportGameOverWithScore(int score);
     }
 }

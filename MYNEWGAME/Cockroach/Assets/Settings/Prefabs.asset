@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cockroach: {fileID: 136595806645356404, guid: fe3098711c6d64d60bc0b4bdf138c6ea,
     type: 3}
+  Foods:
+  - {fileID: 2734055878325245917, guid: a5c54212c5321435799d07203b2e1f92, type: 3}
+  - {fileID: 1248816823714264689, guid: ba42d11b9a4e74a71a4cd1934e9027f0, type: 3}
+  - {fileID: 3470430467853752174, guid: 02d5ea62379ec42099878bd3f03a5be9, type: 3}

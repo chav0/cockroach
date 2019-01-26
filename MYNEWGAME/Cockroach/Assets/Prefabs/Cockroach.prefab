@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 2628259764773363456}
   - component: {fileID: 8944832428446389530}
   m_Layer: 0
-  m_Name: New bone
+  m_Name: New bone 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 5374711082746983260}
   - component: {fileID: 3716362366661173013}
   m_Layer: 0
-  m_Name: New bone
+  m_Name: New bone 44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 6972175692222708219}
   - component: {fileID: 8587400659123127685}
   m_Layer: 0
-  m_Name: New bone
+  m_Name: New bone 45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 6430411794898452242}
   - component: {fileID: 4055965939248313390}
   m_Layer: 0
-  m_Name: New bone
+  m_Name: New bone 55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1381,7 +1381,7 @@ Animator:
   m_GameObject: {fileID: 6728287189132011044}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1499eb89660834425864111958557517, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1750,8 +1750,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0.002881527, y: 0.023796797}
+  m_Size: {x: 0.94389117, y: 1.1687133}
   m_Direction: 0
 --- !u!1 &7586426366330780554
 GameObject:

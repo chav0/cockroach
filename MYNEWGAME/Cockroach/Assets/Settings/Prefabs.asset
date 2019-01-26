@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4bc773e6f574c1288bb6968ecfd7d8, type: 3}
   m_Name: Prefabs
   m_EditorClassIdentifier: 
-  Cockroach: {fileID: 0}
+  Cockroach: {fileID: 136595806645356404, guid: fe3098711c6d64d60bc0b4bdf138c6ea,
+    type: 3}

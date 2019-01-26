@@ -26,22 +26,33 @@ public class UIView : IUserInterfaceView
 
     public void ShowGameOver()
     {
+        _screens.MainMenu.gameObject.SetActive(false);
+        _screens.Defeat.gameObject.SetActive(true);
         _screens.HUD.gameObject.SetActive(false);
-        _screens.MainMenu.gameObject.SetActive(true);
+        _screens.Pause.gameObject.SetActive(false);
     }
 
     public void ShowMainMenu()
     {
-        throw new System.NotImplementedException();
+        _screens.MainMenu.gameObject.SetActive(true);
+        _screens.Defeat.gameObject.SetActive(false);
+        _screens.HUD.gameObject.SetActive(false);
+        _screens.Pause.gameObject.SetActive(false);
     }
 
     public void ShowPause()
     {
-        throw new System.NotImplementedException();
+        _screens.MainMenu.gameObject.SetActive(false);
+        _screens.Defeat.gameObject.SetActive(false);
+        _screens.HUD.gameObject.SetActive(false);
+        _screens.Pause.gameObject.SetActive(true);
     }
 
     public void ShowHUD()
     {
-        throw new System.NotImplementedException();
+        _screens.MainMenu.gameObject.SetActive(false);
+        _screens.Defeat.gameObject.SetActive(false);
+        _screens.HUD.gameObject.SetActive(true);
+        _screens.Pause.gameObject.SetActive(false);
     }
 }

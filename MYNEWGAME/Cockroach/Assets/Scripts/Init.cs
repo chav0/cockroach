@@ -16,7 +16,7 @@ namespace Project.Scripts
         {
             var cockroaches = new List<Cockroach>();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < GameSettings.StartNum; i++)
             {
                 var newCockroach = Instantiate(Prefabs.Cockroach).GetComponent<Cockroach>();
                 newCockroach.CockroachCreate(Time.time, Age.Adult);
@@ -27,9 +27,9 @@ namespace Project.Scripts
                 cockroaches.Add(newCockroach);
             }
 
-            var gameplayView = new GamePlayView(cockroaches, Prefabs.Cockroach.gameObject, GameSettings, MainCamera);
+            var gameplayView = new GamePlayView(cockroaches, Prefabs, GameSettings, MainCamera);
             var interfaceView = new UIView(Screens);
-            var model = new GameModel();
+            var model = new GameModel(GameSettings);
             _presenter = new ApplicationPresenter(gameplayView, interfaceView, model, Screens);
         }
 

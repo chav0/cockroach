@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenuAttribute(menuName = "Settings/Prefabs")]
 public class Prefabs : ScriptableObject
 {
-    public Cockroach Cockroach; 
+    public Cockroach Cockroach;
+    public List<Food> Foods; 
 }

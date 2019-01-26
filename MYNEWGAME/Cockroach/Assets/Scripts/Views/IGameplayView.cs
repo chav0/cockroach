@@ -5,11 +5,9 @@ namespace Project.Scripts.Views
     public interface IGameplayView
     {
         bool IsGameOver { get; }
-
+        float AddFood { get; }
+        float AddWater { get; }
         void Update(Vector2 angle);
-        
-        Vector2 AveragePos { get; }
-
         void SetDirectionOfPress(int code);
         void ResetWorld();
         void SetPause(bool toTrue);

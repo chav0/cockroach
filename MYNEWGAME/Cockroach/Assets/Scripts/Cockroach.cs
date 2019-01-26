@@ -17,8 +17,7 @@ public class Cockroach : MonoBehaviour
     public float lerp = 0.9f;
     public float speedScaler = 1f;
 
-    private Sequence _sequence;
-    private Vector3 randomPos; 
+    private Sequence _sequence; 
 
     public void CockroachCreate(float timeBirth, Age newAge = Age.Young)
     {
@@ -30,10 +29,16 @@ public class Cockroach : MonoBehaviour
             Stages[i].SetActive(i == (int)newAge);
         }
         
-        randomPos = new Vector3(Random.Range(0f, 2f), Random.Range(0f, 2f));
+        _sequence = DOTween.Sequence(); 
+            
+        transform.localScale = Vector3.zero;
+
+        _sequence.Append(transform.DOScale(1f, .25f).SetEase(Ease.OutBack));
+
+        _sequence.Play();
     }
 
-    public void SetPosition(Vector2 angle, Vector2 average, Vector3 cameraPos)
+    /*public void SetPosition(Vector2 angle, Vector2 average, Vector3 cameraPos)
     {
         
         
@@ -42,9 +47,11 @@ public class Cockroach : MonoBehaviour
 
         var posAngle = transform.position - cameraPos; 
         Vector3 perpVector = Vector3.Cross (Vector3.up, angle);
-        float out_angle = Mathf.Atan2(Vector3.Dot(Vector3.one, perpVector), Vector3.Dot(Vector3.up, angle)) * Mathf.Rad2Deg;
+        float out_angle = Mathf.Atan2(Vector3.Dot(Vector3.one, perpVector), 
+                              Vector3.Dot(Vector3.up, angle)) * Mathf.Rad2Deg;
         perpVector = Vector3.Cross (Vector3.up, posAngle);
-        float out_angle2 = Mathf.Atan2(Vector3.Dot(Vector3.one, perpVector), Vector3.Dot(Vector3.up, posAngle)) * Mathf.Rad2Deg;
+        float out_angle2 = Mathf.Atan2(Vector3.Dot(Vector3.one, perpVector), 
+                               Vector3.Dot(Vector3.up, posAngle)) * Mathf.Rad2Deg;
 
         var delta = transform.eulerAngles.z - out_angle2; 
         Debug.Log(delta);
@@ -52,7 +59,7 @@ public class Cockroach : MonoBehaviour
         transform.eulerAngles = new Vector3(0f,0f, out_angle); 
         
         
-    }
+    }*/
 
     public void SetPosition(Vector2 angle, Vector3 cameraPos, Vector2 average, float speed)
     {
@@ -65,9 +72,15 @@ public class Cockroach : MonoBehaviour
         transform.eulerAngles = new Vector3(0f,0f, out_angle + Mathf.Cos(Time.time) * 1.3f);
 
         var scaler = (new Vector3(average.x, average.y) - transform.position).sqrMagnitude > 15 ? 1f : speedScaler; 
-        //transform.position += Vector3.Lerp(Vector3.zero, new Vector3((float)Math.Cos(out_angle), (float)Math.Sin(out_angle)).normalized * speed, .1f); 
+        //transform.position += Vector3.Lerp(Vector3.zero,
+        //new Vector3((float)Math.Cos(out_angle), (float)Math.Sin(out_angle)).normalized * speed, .1f); 
         transform.position += Vector3.Lerp(Vector3.zero, new Vector3(vector.x, vector.y) * speed * scaler, lerp); 
 
+    }
+    
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
 
     public void SetDeath()

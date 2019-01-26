@@ -15,4 +15,4 @@ MonoBehaviour:
   YoungAge: 10
   AdultAge: 70000
   OldAge: 70000
-  Speed: 10
+  Speed: 0.1

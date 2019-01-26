@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Project.Scripts.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class GamePlayView : IGameplayView
 {
@@ -23,9 +26,7 @@ public class GamePlayView : IGameplayView
     public bool IsGameOver => _cockroaches.Count == 0;
 
     public void Update(Vector2 angle)
-    {
-
-        AveragePos += _gameSettings.Speed * angle;
+    {     
         for (int i = 0; i < _cockroaches.Count; i++)
         {
             var cockroach = _cockroaches[i]; 
@@ -51,19 +52,22 @@ public class GamePlayView : IGameplayView
             }
             else
             {
-                cockroach.SetPosition(AveragePos);
+                cockroach.SetPosition(angle, _mainCamera.transform.position, AveragePos, _gameSettings.Speed);
             }           
         }
-        
+
         AveragePos = new Vector2();
         foreach (var cockroach in _cockroaches)
         {
-            AveragePos = cockroach.transform.position; 
+            AveragePos += new Vector2(cockroach.transform.position.x, cockroach.transform.position.y);; 
         }
 
         AveragePos /= _cockroaches.Count;
-        var transform = _mainCamera.transform;
-        transform.position = new Vector3(AveragePos.x, AveragePos.y, transform.position.z); 
+        
+        var transform = _mainCamera.transform; 
+        var delta = angle * _gameSettings.Speed;
+        transform.position += new Vector3(delta.x, delta.y);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(AveragePos.x, AveragePos.y, transform.position.z), 0.9f); 
     }
 
     public Vector2 AveragePos { get; private set; }

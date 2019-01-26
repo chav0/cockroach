@@ -1,5 +1,6 @@
 using Project.Scripts.Models;
 using Project.Scripts.Views;
+using UnityEngine;
 
 namespace Project.Scripts.Presenters
 {
@@ -8,26 +9,22 @@ namespace Project.Scripts.Presenters
         private readonly IGameplayView _gameplayView;
         private readonly IUserInterfaceView _interfaceView;
         private readonly IApplicationModel _model;
+        private readonly Screens _screens;
 
         public ApplicationPresenter(IGameplayView gameplayView, IUserInterfaceView interfaceView,
-            IApplicationModel model)
+            IApplicationModel model, Screens screens)
         {
             _gameplayView = gameplayView;
             _interfaceView = interfaceView;
             _model = model;
-        }
+            _screens = screens;           
+        }   
         
         public void Update()
         {
-            //each update we do same things as always:
-            
-            //get and use inputs
-            
-            //update model and react to state change if it exists
-            
-            //update views in correct order using input and model data
-            
-            //react to gameplay state change, for example gameOver
+            _interfaceView.Update(0, 0);
+            _model.Update();
+            _gameplayView.Update(_interfaceView.AnglePress);
         }
     }
 }

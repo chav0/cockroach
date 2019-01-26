@@ -236,6 +236,7 @@
           <e p="Cockroach.cs" t="Include" />
           <e p="Init.cs" t="Include" />
           <e p="Models" t="Include">
+            <e p="GameModel.cs" t="Include" />
             <e p="IApplicationModel.cs" t="Include" />
           </e>
           <e p="Presenters" t="Include">
@@ -246,9 +247,19 @@
             <e p="GameSettings.cs" t="Include" />
             <e p="Prefabs.cs" t="Include" />
           </e>
+          <e p="UI" t="Include">
+            <e p="Defeat.cs" t="Include" />
+            <e p="HUD.cs" t="Include" />
+            <e p="InputField.cs" t="Include" />
+            <e p="MainMenu.cs" t="Include" />
+            <e p="Pause.cs" t="Include" />
+            <e p="Screens.cs" t="Include" />
+          </e>
           <e p="Views" t="Include">
+            <e p="GamePlayView.cs" t="Include" />
             <e p="IGameplayView.cs" t="Include" />
             <e p="IUserInterfaceView.cs" t="Include" />
+            <e p="UIView.cs" t="Include" />
             <e p="UserInput" t="Include">
               <e p="UIMessage.cs" t="Include" />
             </e>

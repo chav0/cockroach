@@ -1,15 +1,18 @@
+using UnityEngine;
+
 namespace Project.Scripts.Views
 {
     public interface IGameplayView
     {
         bool IsGameOver { get; }
-        int CoinsCollectedInLastGame { get; }
-        int ScoreCollectedInLastGame { get; }
 
-        void Update();
+        void Update(Vector2 angle);
+        
+        Vector2 AveragePos { get; }
 
-        void SetDirectionOfPresss(int code);
+        void SetDirectionOfPress(int code);
         void ResetWorld();
         void SetPause(bool toTrue);
+        void CreateCockroach(Age age);
     }
 }

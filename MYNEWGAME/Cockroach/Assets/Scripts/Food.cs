@@ -8,6 +8,7 @@ public class Food : MonoBehaviour
 {
     public float FoodPoint;
     public float WaterPoint;
+    public AudioSource Audio; 
 
     public bool isCollisionEnter;
 
@@ -16,10 +17,11 @@ public class Food : MonoBehaviour
     public void Remove()
     {
         _sequence = DOTween.Sequence();
-
+        
         _sequence.Append(transform.DOScale(0f, .5f).SetEase(Ease.InBack))
             .AppendCallback(() => Destroy(gameObject));
 
-        _sequence.Play(); 
+        _sequence.Play();
+        Audio.Play(); 
     }
 }

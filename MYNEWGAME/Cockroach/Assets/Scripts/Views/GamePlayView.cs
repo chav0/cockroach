@@ -44,7 +44,6 @@ public class GamePlayView : IGameplayView
             {
                 _foods.RemoveAt(i);
                 Object.Destroy(food.gameObject);
-                Debug.Log((food.transform.position - _mainCamera.transform.position).sqrMagnitude);
             }
         }
 
@@ -161,6 +160,12 @@ public class GamePlayView : IGameplayView
                 cockroach.SetDeath();
                 _cockroaches.RemoveAt(i);
                 DeathMarker = cockroach.Name + " died of old age";
+            }
+            else if(cockroach.IsOnBlob)
+            {
+                cockroach.SetDeath();
+                _cockroaches.RemoveAt(i);
+                DeathMarker = cockroach.Name + " died of poison";
             }
             else
             {

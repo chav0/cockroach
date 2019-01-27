@@ -71,8 +71,8 @@ public class GamePlayView : IGameplayView
                     food.transform.position = new Vector3(camPos.x +i + Random.Range(0f, 5f), camPos.y + j + Random.Range(0f, 5f));
                     _foods.Add(food);
 
-                    var P = (int) (Random.value * 10f);
-                    if (P % 10 == 0)
+                    var P = (int) (Random.value * 20f);
+                    if (P % 20 == 0)
                     {
                         var prefabBlob = _prefabs.Blob[Mathf.RoundToInt(Random.Range(-0.5f, _prefabs.Blob.Count - 1))];
                         var blob = Object.Instantiate(prefabBlob);

@@ -18,7 +18,8 @@ public class Cockroach : MonoBehaviour
     public float TimeBirth;
     public float lerp = 0.9f;
     public float speedScaler = 1f;
-    public List<string> names; 
+    public List<string> names;
+    public bool IsOnBlob; 
 
     private string json; 
     private Sequence _sequence; 
@@ -91,6 +92,15 @@ public class Cockroach : MonoBehaviour
         {
             food.isCollisionEnter = true; 
         }
+
+        var blob = col.GetComponent<Blob>();
+        if (blob != null)
+        {
+            IsOnBlob = true; 
+
+        }
+        
+        Debug.Log(col.name);
     }
 
     public void SetDeath()

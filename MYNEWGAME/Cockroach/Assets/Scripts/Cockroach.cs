@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Json;
 using UnityEngine;
 using DG.Tweening;
+using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class Cockroach : MonoBehaviour
@@ -16,11 +18,15 @@ public class Cockroach : MonoBehaviour
     public float TimeBirth;
     public float lerp = 0.9f;
     public float speedScaler = 1f;
+    public List<string> names; 
 
+    private string json; 
     private Sequence _sequence; 
 
     public void CockroachCreate(float timeBirth, Age newAge = Age.Young)
     {
+        Name = names[(int) Random.Range(0, names.Count - 1)]; 
+        
         TimeBirth = timeBirth;
         Age = newAge;
 
@@ -89,7 +95,20 @@ public class Cockroach : MonoBehaviour
 
     public void SetDeath()
     {
-        Destroy(gameObject);
+        if (_sequence != null)
+            _sequence.Kill();
+        
+        Animator.SetBool("isDeath", true);
+        
+        _sequence = DOTween.Sequence(); 
+        _sequence.AppendInterval(10f);
+        _sequence.AppendCallback(() =>
+        {
+            Destroy(gameObject);
+            _sequence.Kill();
+        });
+
+        _sequence.Play(); 
     }
 
     public void SetPregnant(bool isPregnant, float timePregnant)

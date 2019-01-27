@@ -15,5 +15,7 @@ namespace Project.Scripts.Views
         void CreateCockroach(Age age);
         void DeathCockroach();
         void SetPregnant(); 
+        
+        string DeathMarker { get; }
     }
 }

@@ -8,5 +8,8 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     public Image Hungry;
     public Image Thirst;
-    public InputField InputField; 
+    public InputField InputField;
+    public Text header;
+    public Text header2;
+    public Button Pause; 
 }

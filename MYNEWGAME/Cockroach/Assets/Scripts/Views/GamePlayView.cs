@@ -125,6 +125,7 @@ public class GamePlayView : IGameplayView
             {
                 cockroach.SetDeath();
                 _cockroaches.RemoveAt(i);
+                DeathMarker = cockroach.Name + " died of old age"; 
             }
             else
             {
@@ -179,7 +180,8 @@ public class GamePlayView : IGameplayView
     public void DeathCockroach()
     {
         int randomId = (int)Random.value * (CockNum - 1); 
-        _cockroaches[randomId].SetDeath();   
+        _cockroaches[randomId].SetDeath();
+        DeathMarker = _cockroaches[randomId].Name + " starve to death";
         _cockroaches.RemoveAt(randomId);
     }
 
@@ -189,4 +191,6 @@ public class GamePlayView : IGameplayView
         Debug.Log(randomId);
         _cockroaches[randomId].SetPregnant(true, Time.time); 
     }
+
+    public string DeathMarker { get; private set; }
 }

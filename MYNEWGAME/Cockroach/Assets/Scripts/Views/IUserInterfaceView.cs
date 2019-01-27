@@ -14,6 +14,7 @@ namespace Project.Scripts.Views
         void ShowGameOver();
         void ShowMainMenu();
         void ShowPause();
-        void ShowHUD(); 
+        void ShowHUD();
+        void ShowDeath(string deathMarker); 
     }
 }

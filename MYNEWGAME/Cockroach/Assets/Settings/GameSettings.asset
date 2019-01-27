@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   YoungAge: 10
-  AdultAge: 70000
-  OldAge: 70000
+  AdultAge: 10
+  OldAge: 10
   Speed: 0.1
   StartNum: 1
   FoodPerSecond: 0.01

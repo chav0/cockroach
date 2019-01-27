@@ -1531,6 +1531,19 @@ MonoBehaviour:
   IsPregnant: 0
   TimePregnant: 0
   TimeBirth: 0
+  lerp: 0.9
+  speedScaler: 1
+  names:
+  - Jacob
+  - Ethan
+  - Joe
+  - James
+  - Anthony
+  - Emily
+  - Chloe
+  - Lillian
+  - Abigail
+  - Charlotte
 --- !u!95 &4713920512250780612
 Animator:
   serializedVersion: 3

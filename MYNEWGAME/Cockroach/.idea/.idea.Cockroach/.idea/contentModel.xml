@@ -234,6 +234,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Cockroach.cs" t="Include" />
+          <e p="Food.cs" t="Include" />
           <e p="Init.cs" t="Include" />
           <e p="Models" t="Include">
             <e p="GameModel.cs" t="Include" />

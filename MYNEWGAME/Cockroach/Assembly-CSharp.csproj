@@ -95,6 +95,7 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\Cockroach.cs" />
+    <Compile Include="Assets\Scripts\Food.cs" />
     <Compile Include="Assets\Scripts\Init.cs" />
     <Compile Include="Assets\Scripts\Models\GameModel.cs" />
     <Compile Include="Assets\Scripts\Models\IApplicationModel.cs" />

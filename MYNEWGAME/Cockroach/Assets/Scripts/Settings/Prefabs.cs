@@ -6,5 +6,6 @@ using UnityEngine;
 public class Prefabs : ScriptableObject
 {
     public Cockroach Cockroach;
-    public List<Food> Foods; 
+    public List<Food> Foods;
+    public List<Blob> Blob; 
 }

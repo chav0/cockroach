@@ -13,11 +13,12 @@ using Vector3 = UnityEngine.Vector3;
 public class GamePlayView : IGameplayView
 {
     private List<Cockroach> _cockroaches;
-    private List<Food> _foods; 
+    private List<Food> _foods;
+    private List<Blob> _blobs; 
     private Prefabs _prefabs;
     private GameSettings _gameSettings;
     private Camera _mainCamera;
-    private int _detailLevel;
+    private int _detailLevel = 2;
     private float _timerDetail; 
     
     public GamePlayView(List<Cockroach> cockroaches, Prefabs prefabs, GameSettings gameSettings, Camera MainCamera)
@@ -27,23 +28,56 @@ public class GamePlayView : IGameplayView
         _gameSettings = gameSettings;
         _mainCamera = MainCamera;
         _foods = new List<Food>();
+        _blobs = new List<Blob>();
+        FieldGenerate();
     }
 
     private void FieldGenerate()
     {
-        _detailLevel++; 
-        for (int i = -20 * _detailLevel; i < 20 * _detailLevel; i += 10)
+        var camPos = _mainCamera.transform.position; 
+        
+        for (var i = 0; i < _foods.Count; i++)
         {
-            if (i <= -20 * (_detailLevel - 1) || i >= 20 * (_detailLevel - 1))
+            var food = _foods[i];
+            Vector2 vec = food.transform.position - _mainCamera.transform.position;
+            if (vec.magnitude >= 20)
             {
-                for (int j = -20 * _detailLevel; j < 20 * _detailLevel; j += 10)
+                _foods.RemoveAt(i);
+                Object.Destroy(food.gameObject);
+                Debug.Log((food.transform.position - _mainCamera.transform.position).sqrMagnitude);
+            }
+        }
+
+        for (var i = 0; i < _blobs.Count; i++)
+        {
+            var blob = _blobs[i];
+            Vector2 vec = blob.transform.position - _mainCamera.transform.position;
+            if (vec.magnitude >= 25)
+            {
+                _blobs.RemoveAt(i);
+                Object.Destroy(blob.gameObject);
+            }
+        }
+
+        for (int i = -20 * _detailLevel; i <= 20 * _detailLevel; i += 10)
+        {
+            for (int j = -20 * _detailLevel; j <= 20 * _detailLevel; j += 10)
+            {
+                if (j <= -20 * (_detailLevel - 1) || j >= 20 * (_detailLevel - 1) ||
+                    i <= -20 * (_detailLevel - 1) || i >= 20 * (_detailLevel - 1))
                 {
-                    if (j <= -20 * (_detailLevel - 1) || j >= 20 * (_detailLevel - 1))
+                    var prefab = _prefabs.Foods[Mathf.RoundToInt(Random.Range(-0.5f, _prefabs.Foods.Count - 1))];
+                    var food = Object.Instantiate(prefab);
+                    food.transform.position = new Vector3(camPos.x +i + Random.Range(0f, 5f), camPos.y + j + Random.Range(0f, 5f));
+                    _foods.Add(food);
+
+                    var P = (int) (Random.value * 10f);
+                    if (P % 10 == 0)
                     {
-                        var prefab = _prefabs.Foods[Mathf.RoundToInt(Random.Range(-0.5f, _prefabs.Foods.Count - 1))];
-                        var food = Object.Instantiate(prefab);
-                        food.transform.position = new Vector3(i + Random.Range(0f, 5f), j + Random.Range(0f, 5f));
-                        _foods.Add(food);
+                        var prefabBlob = _prefabs.Blob[Mathf.RoundToInt(Random.Range(-0.5f, _prefabs.Blob.Count - 1))];
+                        var blob = Object.Instantiate(prefabBlob);
+                        blob.transform.position = new Vector3(camPos.x + i + Random.Range(0f, 5f), camPos.y + j + Random.Range(0f, 5f));
+                        _blobs.Add(blob);
                     }
                 }
             }
@@ -63,10 +97,11 @@ public class GamePlayView : IGameplayView
             UpdateFood();
             UpdatePregnant();
 
-            if (Time.time - _timerDetail > 5f && _detailLevel < 20)
+            if (Time.time - _timerDetail > 3f && _detailLevel < 20)
             {
                 _timerDetail = Time.time; 
                 FieldGenerate();
+                Debug.Log(_detailLevel);
             }
         }
     }
@@ -93,7 +128,7 @@ public class GamePlayView : IGameplayView
         for (int i = 0; i < _cockroaches.Count; i++)
         {
             var cockroach = _cockroaches[i];
-            if (cockroach.IsPregnant && Time.time - cockroach.TimePregnant > _gameSettings.PregnantPorog)
+            if (cockroach.IsPregnant && Time.time - cockroach.TimePregnant > _gameSettings.PregnantPeriod)
             {
                 CreateCockroach(Age.Adult);
                 cockroach.SetPregnant(false, 0f);
@@ -105,46 +140,50 @@ public class GamePlayView : IGameplayView
     {
         for (int i = 0; i < _cockroaches.Count; i++)
         {
-            var cockroach = _cockroaches[i]; 
+            var cockroach = _cockroaches[i];
             if (Time.time - cockroach.TimeBirth > _gameSettings.YoungAge && cockroach.Age == Age.Young)
             {
                 cockroach.ChangeStage(Age.Adult);
             }
-            
+
             if (Time.time - cockroach.TimeBirth > _gameSettings.AdultAge && cockroach.Age == Age.Adult)
             {
                 cockroach.ChangeStage(Age.Old);
             }
-            
+
             if (Time.time - cockroach.TimeBirth > _gameSettings.OldAge && cockroach.Age == Age.Old)
             {
-                cockroach.Age = Age.Death; 
+                cockroach.Age = Age.Death;
             }
 
             if (cockroach.Age == Age.Death)
             {
                 cockroach.SetDeath();
                 _cockroaches.RemoveAt(i);
-                DeathMarker = cockroach.Name + " died of old age"; 
+                DeathMarker = cockroach.Name + " died of old age";
             }
             else
             {
                 cockroach.SetPosition(angle, _mainCamera.transform.position, AveragePos, _gameSettings.Speed);
-            }           
+            }
         }
+
 
         AveragePos = Vector2.zero;
         foreach (var cockroach in _cockroaches)
         {
-            AveragePos += new Vector2(cockroach.transform.position.x, cockroach.transform.position.y);; 
+            AveragePos += new Vector2(cockroach.transform.position.x, cockroach.transform.position.y);
         }
 
         AveragePos /= _cockroaches.Count;
-        
-        var transform = _mainCamera.transform; 
+
+        var transform = _mainCamera.transform;
         var delta = angle * _gameSettings.Speed;
-        transform.position += new Vector3(delta.x, delta.y);
-        transform.position = Vector3.Lerp(transform.position, new Vector3(AveragePos.x, AveragePos.y, transform.position.z), 0.01f); 
+        if (!Single.IsNaN(angle.x))
+            transform.position += new Vector3(delta.x, delta.y);
+        if (!Single.IsNaN(AveragePos.x))
+            transform.position = Vector3.Lerp(transform.position,
+                new Vector3(AveragePos.x, AveragePos.y, transform.position.z), 0.01f);
     }
 
     public Vector2 AveragePos { get; private set; }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   YoungAge: 10
-  AdultAge: 10
+  AdultAge: 6000
   OldAge: 10
   Speed: 0.1
   StartNum: 1
@@ -24,5 +24,7 @@ MonoBehaviour:
   FoodPerCock: 25
   WaterPerCock: 25
   PregnantPorog: 0.95
-  DeathPorog: 0.5
+  DeathPorog: 0.1
   DeathSeconds: 3
+  PregnantIntervals: 5
+  PregnantPeriod: 3

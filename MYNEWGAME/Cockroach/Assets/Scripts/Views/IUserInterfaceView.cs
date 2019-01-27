@@ -8,6 +8,7 @@ namespace Project.Scripts.Views
         bool Pause { get; }
         bool NewGame { get; }
         bool Continue { get; }
+        bool Defeat { get; set; }
 
         void Update(float hunger, float thirst);
 

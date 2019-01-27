@@ -5,7 +5,12 @@ using UnityEngine.EventSystems;
 
 public class InputField : MonoBehaviour, IDragHandler, IPointerClickHandler
 {
-    public Vector2 Angle; 
+    public Vector2 Angle;
+
+    private void Awake()
+    {
+        Angle = Vector2.up;
+    }
 
     public void OnDrag(PointerEventData data)
     {

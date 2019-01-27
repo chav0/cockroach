@@ -33,6 +33,9 @@ public class GameModel : IApplicationModel
         Hunger += addFood;
         Thirst += addWater;
 
+        /*Hunger = Mathf.Clamp(Hunger, 0f, FullHunger); 
+        Thirst = Mathf.Clamp(Thirst, 0f, FullThirst); */
+
         FullHunger = CockNum * _settings.FoodPerCock;
         FullThirst = CockNum * _settings.WaterPerCock; 
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Project.Scripts.Views;
 using Project.Scripts.Views.UserInput;
 using UnityEngine;
@@ -11,19 +12,24 @@ public class UIView : IUserInterfaceView
     private string _oldMessage;
     private UIMessage _pause = new UIMessage(); 
     private UIMessage _continue = new UIMessage(); 
+    private UIMessage _start = new UIMessage();
+
+    private Sequence _sequence; 
 
     public UIView(Screens screens)
     {
         _screens = screens;
         _screens.HUD.Pause.onClick.AddListener(_pause.Set);
         _screens.Pause.Continue.onClick.AddListener(_continue.Set);
+        _screens.MainMenu.Start.onClick.AddListener(_start.Set);
     }
 
     public Vector2 AnglePress => _screens.HUD.InputField.Angle;
 
-    public bool Pause => _pause.TryGet(); 
-    public bool NewGame { get; }
-    public bool Continue => _continue.TryGet(); 
+    public bool Pause => _pause.TryGet();
+    public bool NewGame => _start.TryGet(); 
+    public bool Continue => _continue.TryGet();
+    public bool Defeat { get; set; }
 
     public void Update(float hunger, float thirst)
     {
@@ -42,6 +48,14 @@ public class UIView : IUserInterfaceView
         _screens.Defeat.gameObject.SetActive(true);
         _screens.HUD.gameObject.SetActive(false);
         _screens.Pause.gameObject.SetActive(false);
+        
+        if (_sequence != null)
+            _sequence.Kill();
+
+        _sequence = DOTween.Sequence();
+        _sequence.AppendInterval(5);
+        _sequence.AppendCallback(() => Defeat = true);
+        _sequence.Play(); 
     }
 
     public void ShowMainMenu()

@@ -11,6 +11,9 @@ namespace Project.Scripts.Presenters
         private readonly IApplicationModel _model;
         private readonly Screens _screens;
 
+        private float _pregnantTimer;
+        private float _deathTimer; 
+
         public ApplicationPresenter(IGameplayView gameplayView, IUserInterfaceView interfaceView,
             IApplicationModel model, Screens screens)
         {
@@ -24,18 +27,34 @@ namespace Project.Scripts.Presenters
         {
 
             _gameplayView.Update(_interfaceView.AnglePress);
-            _model.Update(_gameplayView.AddFood, _gameplayView.AddWater);
-            _interfaceView.Update(_model.Hunger, 0);
+            _model.Update(_gameplayView.AddFood, _gameplayView.AddWater, _gameplayView.CockNum);
+            _interfaceView.Update(_model.Hunger / _model.FullHunger, _model.Thirst / _model.FullThirst);
 
-            if (_model.Hunger < 0f || _model.Thirst < 0f)
+            if (_gameplayView.IsGameOver)
             {
                 _interfaceView.ShowGameOver();
             }
-
-            if (_interfaceView.Pause)
+            else
             {
-                _interfaceView.ShowPause();
-                _gameplayView.SetPause(true);
+                if ((_model.Hunger / _model.FullHunger < 0.2f || _model.Thirst / _model.FullThirst < 0.2f) &&
+                    Time.time - _deathTimer > 3f)
+                {
+                    _gameplayView.DeathCockroach();
+                    _deathTimer = Time.time;
+                }
+
+                if (_model.Hunger / _model.FullHunger > 0.9f && Time.time - _pregnantTimer > 5f)
+                {
+                    _gameplayView.SetPregnant();
+                    _pregnantTimer = Time.time;
+                    Debug.Log("PREGNANT");
+                }
+
+                if (_interfaceView.Pause)
+                {
+                    _interfaceView.ShowPause();
+                    _gameplayView.SetPause(true);
+                }
             }
 
             if (_interfaceView.Continue)

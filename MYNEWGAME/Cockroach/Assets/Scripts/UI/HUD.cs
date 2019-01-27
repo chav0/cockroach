@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Slider Hungry;
-    public Slider Thirst;
+    public Image Hungry;
+    public Image Thirst;
     public InputField InputField; 
 }

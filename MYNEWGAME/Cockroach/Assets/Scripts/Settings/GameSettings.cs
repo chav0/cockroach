@@ -14,4 +14,9 @@ public class GameSettings : ScriptableObject
     public float WaterPerSecond = 0.01f;
     public int StartFood = 25;
     public int StartWater = 25;
+    public int FoodPerCock = 25;
+    public int WaterPerCock = 25;
+    public float PregnantPorog = 0.95f;
+    public float DeathPorog = 0.5f;
+    public float DeathSeconds = 3f; 
 }

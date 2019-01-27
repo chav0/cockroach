@@ -9,7 +9,7 @@ public class Food : MonoBehaviour
     public float FoodPoint;
     public float WaterPoint;
 
-    [NonSerialized] public bool isCollisionEnter;
+    public bool isCollisionEnter;
 
     private Sequence _sequence;
 

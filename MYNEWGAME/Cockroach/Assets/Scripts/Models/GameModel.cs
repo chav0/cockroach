@@ -8,26 +8,33 @@ public class GameModel : IApplicationModel
 {
     public int BestScore { get; private set; }
     public float Hunger { get; private set; }
+    public float FullHunger { get; private set; }
     public float Thirst { get; private set; }
+    public float FullThirst { get; private set; }
 
     private float _timer;
     private GameSettings _settings; 
 
     public GameModel(GameSettings settings)
     {
-        _settings = settings; 
+        _settings = settings;
+        Hunger = settings.StartFood;
+        Thirst = settings.StartWater; 
     }
 
-    public void Update(float addFood, float addWater)
+    public void Update(float addFood, float addWater, int CockNum)
     {
         if (Time.time - _timer > 1f)
         {
-            Hunger -= _settings.FoodPerSecond;
-            Thirst -= _settings.WaterPerSecond;
+            Hunger -= _settings.FoodPerSecond * CockNum;
+            Thirst -= _settings.WaterPerSecond * CockNum;
         }
 
         Hunger += addFood;
-        Thirst += addWater; 
+        Thirst += addWater;
+
+        FullHunger = CockNum * _settings.FoodPerCock;
+        FullThirst = CockNum * _settings.WaterPerCock; 
     }
 
     public void ReportGameOverWithScore(int score)

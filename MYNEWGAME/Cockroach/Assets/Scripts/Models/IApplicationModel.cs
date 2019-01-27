@@ -7,7 +7,7 @@ namespace Project.Scripts.Models
         float FullHunger { get; }
         float Thirst { get; }
         float FullThirst { get; }
-        void Update(float addFood, float addWater);
+        void Update(float addFood, float addWater, int CockNum);
         void ReportGameOverWithScore(int score);
     }
 }

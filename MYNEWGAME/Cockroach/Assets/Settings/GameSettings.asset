@@ -16,3 +16,13 @@ MonoBehaviour:
   AdultAge: 70000
   OldAge: 70000
   Speed: 0.1
+  StartNum: 1
+  FoodPerSecond: 0.01
+  WaterPerSecond: 0.01
+  StartFood: 15
+  StartWater: 25
+  FoodPerCock: 25
+  WaterPerCock: 25
+  PregnantPorog: 0.95
+  DeathPorog: 0.5
+  DeathSeconds: 3

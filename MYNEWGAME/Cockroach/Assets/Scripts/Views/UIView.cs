@@ -20,8 +20,8 @@ public class UIView : IUserInterfaceView
 
     public void Update(float hunger, float thirst)
     {
-        _screens.HUD.Hungry.value = hunger;
-        _screens.HUD.Thirst.value = thirst; 
+        _screens.HUD.Hungry.fillAmount = hunger;
+        _screens.HUD.Thirst.fillAmount = thirst; 
     }
 
     public void ShowGameOver()

@@ -80,7 +80,11 @@ public class Cockroach : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+        var food = col.GetComponent<Food>();
+        if (food != null)
+        {
+            food.isCollisionEnter = true; 
+        }
     }
 
     public void SetDeath()

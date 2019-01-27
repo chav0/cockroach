@@ -91,6 +91,7 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Scripts\Blob.cs" />
     <Compile Include="Assets\Scripts\Cockroach.cs" />
     <Compile Include="Assets\Scripts\Food.cs" />
     <Compile Include="Assets\Scripts\Init.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets\Scripts\Views\IUserInterfaceView.cs" />
     <Compile Include="Assets\Scripts\Views\UIView.cs" />
     <Compile Include="Assets\Scripts\Views\UserInput\UIMessage.cs" />
+    <None Include="Assets\Scripts\spriteGlitch.shader" />
     <None Include="Assets\Anima2D\Examples\Shaders\VisibleInsideMask.shader" />
     <None Include="Assets\Anima2D\Examples\Shaders\VisibleOutsideMask.shader" />
     <None Include="Assets\Anima2D\Version.txt" />
@@ -120,19 +122,19 @@
     <None Include="Assets\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
     <None Include="Assets\Anima2D\Readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -339,16 +341,16 @@
       <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/o.chupakhina/Downloads/tarakany/MYNEWGAME/Cockroach/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/o.chupakhina/Downloads/tarac/MYNEWGAME/Cockroach/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
